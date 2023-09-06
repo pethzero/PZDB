@@ -122,7 +122,6 @@
         var paramhd = {
           RECNO: 'xx'
         };
-
         // เพิ่มอาร์เรย์ paramhd เข้าไปใน FormData และแปลงเป็น JSON ก่อน
         formData.append('paramhd', JSON.stringify(paramhd));
 

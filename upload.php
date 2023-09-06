@@ -10,6 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo $sqlhd;
   // print_r($paramhdJson);
 
+  $messagelog = 'I mean';
   // //////////////////////////////////////////////////  UPLOAD ////////////////////////////////////////////////////
   if (isset($_FILES["fileToUpload"]) && $_FILES["fileToUpload"]["error"] === UPLOAD_ERR_OK) {
     $targetDir = "uploads/";
@@ -18,13 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $uploadOk = 1;
 
     if (file_exists($targetFile)) {
-      echo "Sorry, file already exists.";
+      $messagelog = $messagelog ."Sorry, file already exists.";
       $uploadOk = 0;
     }
 
     // Check file size
     if ($_FILES["fileToUpload"]["size"] > 500000) {
-      echo "Sorry, your file is too large.";
+      $messagelog =  $messagelog ."Sorry, your file is too large.";
       $uploadOk = 0;
     }
 
@@ -33,17 +34,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
       && $imageFileType != "gif"
     ) {
-      echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $messagelog = $messagelog . "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
       $uploadOk = 0;
     }
 
     if ($uploadOk == 0) {
-      echo "Sorry, your file was not uploaded.";
+      $messagelog = $messagelog . "Sorry, your file was not uploaded.";
+      echo $messagelog.'<br>'.$targetFile.'<br>'.$_FILES["fileToUpload"]["tmp_name"];
     } else {
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
         echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+        // echo "<script>alert('ERROR : ไม่สามารถ Upload ไฟล์ได้ !!' ".(isAdmin()? getcwd() : '').") </script>";
       } else {
-        echo "Sorry, there was an error uploading your file.";
+        echo "MMMM Sorry, there was an error uploading your file.".'<br>'.$targetFile.'<br>'.$_FILES["fileToUpload"]["tmp_name"];
       }
     }
   } elseif (isset($_FILES["fileToUpload"]) && $_FILES["fileToUpload"]["error"] === UPLOAD_ERR_NO_FILE) {
@@ -77,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Check file size
-        if ($_FILES["mutiplefileToUpload"]["size"][$key] > 100) {
+        if ($_FILES["mutiplefileToUpload"]["size"][$key] > 500000) {
           echo "Sorry, your file  ".htmlspecialchars($fileName)  ." is too large.";
           echo '<br>';
           $uploadOk = 0;
@@ -109,22 +112,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           }
         }
 
-        // // Check if file already exists
-        // if (file_exists($targetFile)) 
-        // {
-        //   echo "Sorry, file $fileName already exists.";
-        // } else {
-        //   // ... continue with the rest of the file upload process
-
-        //   // Move the uploaded file to the target directory
-        //   if (move_uploaded_file($uploadedFiles["tmp_name"][$key], $targetFile)) {
-        //     echo "The file " . htmlspecialchars($fileName) . " has been uploaded.";
-        //   } else {
-        //     echo "Sorry, there was an error uploading file: $fileName.";
-        //   }
-
-        //   echo '-------';
-        // }
       } elseif ($uploadedFiles["error"][$key] === UPLOAD_ERR_NO_FILE) {
         echo "No file was uploaded.";
       } else {
