@@ -5,12 +5,12 @@ include("sql.php");
 class bindParamData {
     public static function bindParams($stmt, $data, $condition) {
         switch ($condition) {
-            case '001':
+            case 'DB_TEST001':
                 $stmt->bindParam(':name', $data['name']);
                 break;
-            case '002':
-                $stmt->bindParam(':a', $data['a']);
-                $stmt->bindParam(':b', $data['b']);
+            case 'DB_TEST002':
+                $stmt->bindParam(':name', $data['name']);
+                $stmt->bindParam(':id', $data['id']);
                 break;
             // เพิ่มเงื่อนไขเพิ่มเติมตามความต้องการ
             default:

@@ -4,7 +4,7 @@
 
 // // กำหนดคำสั่ง SQL สำหรับแต่ละค่า $queryIdHD ที่คุณต้องการ
 // $sqlsreach['001'] = "INSERT INTO appointment (CUSTNAME) VALUES (:name)";
-// $sqlsreach['002'] = "INSERT INTO another_table (COLUMN_NAME) VALUES (:value)";
+
 
 // function ScanSQL($queryId)
 // {
@@ -23,9 +23,7 @@ class SQLQueries {
 
     public function __construct() {
         // กำหนดคำสั่ง SQL สำหรับแต่ละค่า $queryIdHD ที่คุณต้องการ
-        $this->sqlsreach['IND_APPPOINTMENT'] = "INSERT INTO appointment (CUSTNAME) VALUES (:name)";
-        $this->sqlsreach['001'] = "INSERT INTO appointment (CUSTNAME) VALUES (:name)";
-        $this->sqlsreach['002'] = "INSERT INTO another_table (COLUMN_NAME) VALUES (:value)";
+        $this->sqlsreach['IND_TEST'] = "INSERT INTO test (NAME) VALUES (:name)";
     }
 
 

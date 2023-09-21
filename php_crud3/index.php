@@ -214,7 +214,8 @@
             if (conditionsformdata == "save") {
                 // ประมวลผลเพิ่มข้อมูล
                 // process to insert data
-                formData.append('queryIdHD', 'IND_APPPOINTMENT');
+                formData.append('queryIdHD', 'IND_TEST');
+                formData.append('condition', 'DB_TEST001');
             } else if (conditionsformdata == "delete") {
                 // ประมวลผลลบข้อมูล
                 // process to delete data
@@ -222,13 +223,13 @@
             } else if (conditionsformdata == "update") {
                 // ประมวลผลอัพเดทข้อมูล
                 // process to update data
-                formData.append('queryIdHD', 'UPD_DRAWING');
+                formData.append('queryIdHD', 'XXXXX');
             } else if (conditionsformdata == "modified") {
                 // ประมวลผลอัพเดทข้อมูล
                 // process to update data
-                formData.append('queryIdHD', 'MOUPD_DRAWING');
-                formData.append('modifyIdHD', 'IND_DRAWING');
-                formData.append('conditionmain', 'I_DRAW');
+                formData.append('queryIdHD', 'XXXXX');
+                formData.append('modifyIdHD', 'XXXXX');
+                formData.append('condition', 'DB_TEST001');
             } else {
                 // กรณีอื่น ๆ
                 // other
@@ -285,7 +286,7 @@
         $("#idForm").submit(function(event) {
             event.preventDefault();
             datatable_generetor();
-            let url = 'ajax/crud_insert.php'
+            let url = 'crud_insert.php'
             if (process == 'T') {
                 AlertSave(url)
             }
@@ -374,7 +375,7 @@
 
         //////////////////////////////////////////////////////////// INSERT ////////////////////////////////////////////////////////////
         const IUDSQL = (url) => {
-            const apiUrl = 'ajax/crud_insert.php';
+            const apiUrl = url;
 
             fetch(apiUrl, {
                     method: 'POST',
