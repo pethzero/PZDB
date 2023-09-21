@@ -1,9 +1,9 @@
 <?php
-$host = '192.168.1.205';
+$host = '';
 $port = '33601';
-$db_name = 'SAN_SERVER';
+$db_name = '';
 $username = 'root';
-$password = '1234';
+$password = '';
 
 try {
     $pdo = new PDO("mysql:host=$host;port=$port;dbname=$db_name", $username, $password);

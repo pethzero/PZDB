@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php'; // เรียกใช้ autoload ของ Composer
+require '../vendor/autoload.php'; // เรียกใช้ autoload ของ Composer
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 

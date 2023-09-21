@@ -1,0 +1,92 @@
+<?php
+include("../connect_sql.php");
+include("database.php");
+
+class InsertData {
+    private $conn;
+
+    public function __construct() {
+        $db = new Database();
+        $this->conn = $db->connect();
+    }
+
+    public function insertRecord($data) {
+        try {
+            $sql = "INSERT INTO your_table_name (column1, column2, column3) VALUES (:value1, :value2, :value3)";
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->bindParam(':value1', $data['value1']);
+            $stmt->bindParam(':value2', $data['value2']);
+            $stmt->bindParam(':value3', $data['value3']);
+
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+}
+
+// ใช้คลาส InsertData เพื่อ insert ข้อมูล
+$insertData = new InsertData();
+$data = array(
+    'value1' => 'ค่า1',
+    'value2' => 'ค่า2',
+    'value3' => 'ค่า3'
+);
+
+if ($insertData->insertRecord($data)) {
+    echo "บันทึกข้อมูลสำเร็จ";
+} else {
+    echo "เกิดข้อผิดพลาดในการบันทึกข้อมูล";
+}
+?>
+
+
+<?php
+include("../connect_sql.php");
+include("database.php");
+
+class UpdateData {
+    private $conn;
+
+    public function __construct() {
+        $db = new Database();
+        $this->conn = $db->connect();
+    }
+
+    public function updateRecord($data) {
+        try {
+            $sql = "UPDATE your_table_name SET column1 = :value1, column2 = :value2, column3 = :value3 WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->bindParam(':value1', $data['value1']);
+            $stmt->bindParam(':value2', $data['value2']);
+            $stmt->bindParam(':value3', $data['value3']);
+            $stmt->bindParam(':id', $data['id']);
+
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+}
+
+// ใช้คลาส UpdateData เพื่ออัพเดทข้อมูล
+$updateData = new UpdateData();
+$data = array(
+    'value1' => 'ค่าที่อัพเดท1',
+    'value2' => 'ค่าที่อัพเดท2',
+    'value3' => 'ค่าที่อัพเดท3',
+    'id' => 1 // รหัสหรือเงื่อนไขที่ต้องการใช้ในการอัพเดท
+);
+
+if ($updateData->updateRecord($data)) {
+    echo "อัพเดทข้อมูลสำเร็จ";
+} else {
+    echo "เกิดข้อผิดพลาดในการอัพเดทข้อมูล";
+}
+?>

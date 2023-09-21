@@ -4,28 +4,7 @@ $sql = array();
 
 $sql['IND_ACTIVITYHD'] = "INSERT INTO ACTIVITYHD (RECNO, CREATED, LASTUPD,STATUS,DOCNO,CUST, CONT,CUSTNAME,CONTNAME) VALUES (:RECNO, 'NOW', 'NOW',':STATUS',':DOCNO' , :CUST , :CONT ,':CUSTNAME', ':CONTNAME')";
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// function sqlexec($queryId, $params) 
-// {
-//   global $sql;
-//   // ตรวจสอบว่ามีคำสั่ง SQL ตามหมายเลขที่กำหนดหรือไม่
-//   if (array_key_exists($queryId, $sql)) {
-//     $sqlQuery = $sql[$queryId];
-//     // ตรวจสอบว่า params มีค่าหรือไม่
-//     if (!empty($params))
-//     {
-//       // เติมค่าพารามิเตอร์ในคำสั่ง SQL
-//       foreach ($params as $key => $value) {
-//         if ($value === null || $value === '') {
-//           $value = 'NULL';
-//         }
-//         $sqlQuery = str_replace(":$key", $value, $sqlQuery);
-//       }
-//     }
-//     return $sqlQuery;
-//   } else {
-//     return null;
-//   }
-// }
+
 function sqlexec($queryId, $params) 
 {
   global $sql;

@@ -1,0 +1,122 @@
+.selected {
+	background-color: #e6f0ff;
+  }
+  /* CSS for DataTables Pagination */
+/* .paginate_button {
+  padding: 5px 10px;
+  margin: 2px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.paginate_button.current {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+} */
+.page-link {
+  padding: 5px 10px;
+  margin: 2px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* .page-link:hover {
+  background-color: #0c13d8 !important;
+} */
+
+
+@media (min-width: 576px) {
+.container-layout {
+max-width: 540px;
+}
+}
+
+@media (min-width: 768px) {
+.container-layout {
+max-width: 720px;
+}
+}
+
+@media (min-width: 992px) {
+.container {
+max-width: 960px;
+}
+}
+
+
+@media (max-width: 576px) {
+	.dataTables_length {
+		text-align: left !important;
+		margin-bottom: 10px;
+	}
+
+	.dataTables_filter {
+		text-align: left !important;
+		margin-bottom: 10px;
+	}
+}
+
+.table-custom  {
+  --bs-table-color: #000;
+  /* --bs-table-bg: #cfe2ff; */
+  --bs-table-bg:#98b7ef;
+  --bs-table-border-color: #bacbe6;
+  --bs-table-striped-bg: #c5d7f2;
+  --bs-table-striped-color: #000;
+  --bs-table-active-bg: #bacbe6;
+  --bs-table-active-color: #000;
+  --bs-table-hover-bg: #bfd1ec;
+  --bs-table-hover-color: #000;
+  color: var(--bs-table-color);
+  border-color: var(--bs-table-border-color)
+}
+
+/* .bg-custom {
+  background-color: #ff9800; 
+  color: #fff;
+} */
+.bg-oragne {
+  background-color: #ff9800; /* เปลี่ยนสีตามที่คุณต้องการ */
+  /* color: #fff; */
+}
+
+
+.bg-pink {
+  background-color: #ef98d3; /* เปลี่ยนสีตามที่คุณต้องการ */
+  /* color: #fff; */
+}
+
+@media (min-width: 1200px) {
+  .modal-xl {
+    --bs-modal-width: 1500px !important;
+  }
+}
+
+.datepicker td,
+th {
+  text-align: center;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.datepicker {
+  border: 1px solid black;
+}
+
+
+    
+.container-fluid {
+  transition: padding 0.3s ease;  /* เพิ่มเอฟเฟกต์การเปลี่ยนขนาดอย่างนุ่มนวล */
+
+  /* ใช้ media query เพื่อปรับแต่งสไตล์เมื่อหน้าจอมีความกว้างเกิน 1000px */
+  @media (min-width: 960px) {
+    margin-left: auto;  /* จัดตำแหน่งกล่องส่วนข้างซ้าย */
+    margin-right: auto; /* จัดตำแหน่งกล่องส่วนข้างขวา */
+    padding-left: 40px; /* ปรับขอบซ้ายเล็กน้อย */
+    padding-right: 40px; /* ปรับขอบขวาเล็กน้อย */
+  }
+}

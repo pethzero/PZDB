@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $messagelog = 'I mean';
   // //////////////////////////////////////////////////  UPLOAD ////////////////////////////////////////////////////
   if (isset($_FILES["fileToUpload"]) && $_FILES["fileToUpload"]["error"] === UPLOAD_ERR_OK) {
-    $targetDir = "uploads/";
+    $targetDir = "";
     $targetFile = $targetDir . basename($_FILES["fileToUpload"]["name"]);
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
     $uploadOk = 1;

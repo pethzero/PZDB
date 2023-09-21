@@ -1,11 +1,11 @@
 <?php
-$host = '192.168.1.205';
-$db_name = 'san';
-$username = 'root';
+$host = '';
+$db_name = '';
+$username = '';
 $password = '';
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
+    $pdo = new PDO("mysql:host=$host;port=33061;dbname=$db_name", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully";
 } catch (PDOException $e) {
