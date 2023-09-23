@@ -1,5 +1,5 @@
 <?php
-class InsertData
+class DeleteData
 {
     private $conn;
     public $data_commit;
@@ -12,7 +12,7 @@ class InsertData
         $this->data_commit = $this->conn;
     }
 
-    public function insertRecord($data, $sqlQuery, $condition)
+    public function deleteRecord($data, $sqlQuery, $condition)
     {
         try {
             $stmt = $this->conn->prepare($sqlQuery);
@@ -25,7 +25,7 @@ class InsertData
         }
     }
 
-    public function insertRecordMultiple($dataArray, $sqlQuery, $condition)
+    public function deleteRecordMultiple($dataArray, $sqlQuery, $condition)
     {
         try {
             foreach ($dataArray as $data) {

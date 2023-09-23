@@ -63,3 +63,31 @@
    - คุณสามารถลองใช้เวอร์ชันที่เข้ากับระบบของคุณได้เช่น `1.15.0` ซึ่งอาจไม่มีความต้องการ ext-gd และ ext-zip ที่จำเป็น.
 
 คำเตือน: การไม่ติดตั้งหรือปิดใช้งาน extensions ที่ `phpoffice/phpspreadsheet` ต้องการอาจทำให้บางความสามารถของไลบรารีเป็นไปไม่ได้ และอาจเกิดความผิดพลาดหรือปัญหาในการใช้งาน.
+
+
+
+I'm planning version 2.0 with some bc breaks, and I'm looking at dropping methods like setCellValueByColumnAndRow() which accepts column and row number arguments, leaving only setCellValue() which requires a cell address as a string value(e.g. 'C5').
+There are 14 such methods defined in the WorkSheet class:
+
+setCellValueByColumnAndRow() has equivalent setCellValue()
+setCellValueExplicitByColumnAndRow() has equivalent setCellValueExplicit()
+getCellByColumnAndRow() has equivalent getCell()
+cellExistsByColumnAndRow() has equivalent cellExists()
+getStyleByColumnAndRow() has equivalent getStyle()
+setBreakByColumnAndRow() has equivalent setBreak()
+mergeCellsByColumnAndRow() has equivalent mergeCells()
+unmergeCellsByColumnAndRow() has equivalent unmergeCells()
+protectCellsByColumnAndRow() has equivalent protectCells()
+unprotectCellsByColumnAndRow() has equivalent unprotectCells()
+setAutoFilterByColumnAndRow() has equivalent setAutoFilter()
+freezePaneByColumnAndRow() has equivalent freezePane()
+getCommentByColumnAndRow() has equivalent getComment()
+setSelectedCellByColumnAndRow() has equivalent setSelectedCells()
+There is some inconsistency here, with other methods that only accept a cell address like IV255 and that have no "byColumnAndRow" eqivalent (e.g setTopLeftCell() and setSelectedCell()); so this deprecation will provide more consistency.
+
+The base methods already provide more flexibility than the byColumnAndRow() methods
+
+There are also a couple of column-only methods:
+
+getColumnDimensionByColumn() has equivalent getColumnDimension()
+insertNewColumnBeforeByIndex() has equivalent insertNewColumnBefore()
