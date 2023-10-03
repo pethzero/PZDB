@@ -1,0 +1,62 @@
+แนะนำตัวอย่างการใช้งาน `async/await` และ Promise ใน JavaScript:
+
+1. **การใช้งาน Async/Await:**
+
+```javascript
+// ฟังก์ชันแบบ Async ที่ใช้ Async/Await
+async function fetchData() {
+  try {
+    const response = await fetch('https://api.example.com/data');
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('เกิดข้อผิดพลาด:', error);
+  }
+}
+
+// เรียกใช้ฟังก์ชัน fetchData()
+fetchData();
+```
+
+ในตัวอย่างนี้:
+- เราใช้ `async` กับฟังก์ชัน `fetchData` เพื่อระบุว่าเป็นฟังก์ชันที่ใช้งานแบบ Asynchronous.
+- เราใช้ `await` กับ `fetch` เพื่อรอให้การเรียก API เสร็จสมบูรณ์ และ `await` กับ `response.json()` เพื่อรอให้การแปลงข้อมูล JSON เสร็จสมบูรณ์ก่อนที่จะนำข้อมูลไปใช้.
+- การใช้ `try` และ `catch` ช่วยจัดการกับข้อผิดพลาดที่อาจเกิดขึ้นในระหว่างการทำงาน.
+
+2. **การใช้งาน Promise:**
+
+```javascript
+// ฟังก์ชันที่สร้าง Promise
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    fetch('https://api.example.com/data')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('ไม่สามารถเรียกข้อมูลได้');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+}
+
+// เรียกใช้ Promise
+fetchData()
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.error('เกิดข้อผิดพลาด:', error);
+  });
+```
+
+ในตัวอย่างนี้:
+- เราสร้าง Promise ภายในฟังก์ชัน `fetchData` และใช้ `resolve` เมื่อเราได้รับข้อมูลเรียบร้อยและใช้ `reject` เมื่อเกิดข้อผิดพลาด.
+- เราใช้ `.then()` และ `.catch()` เพื่อจัดการกับผลลัพธ์และข้อผิดพลาดของ Promise เมื่อมันเสร็จสมบูรณ์.
+
+การใช้งาน Async/Await และ Promise ช่วยให้เราจัดการกับการทำงานแบบ Asynchronous ได้ง่ายขึ้นและอ่านเข้าใจมากขึ้นในการเขียนโค้ด JavaScript ที่ใช้งาน API หรือการประมวลผลข้อมูลแบบแอสิงโครนัสได้อย่างมีประสิทธิภาพและปลอดภัย.

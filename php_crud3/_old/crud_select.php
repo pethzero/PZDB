@@ -2,8 +2,8 @@
 class SelectData
 {
     private $conn;
-    public $message_log;
     public $data_commit;
+    public $message_log;
     public function __construct()
     {
         $db = new Database();
