@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loader Control</title>
+  <!-- เพิ่มลิงก์ไปยัง jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body{
+      margin: 0;
+    }
+    .loader-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: radial-gradient(rgba(20, 20, 20, .5), rgba(0, 0, 0, .5));
+      background: -webkit-radial-gradient(rgba(20, 20, 20, .5), rgba(0, 0, 0, .5));
+      margin: 0;
+      padding: 0;
+      position: inline-block;
+      margin: auto;
+    }
+    .loader {
+      position: inline-block;
+      margin: auto;
+      box-sizing: border-box;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      transform-origin: 50% 50%;
+      transform: perspective(200px) rotateX(66deg);
+      animation: spinner-wiggle 1.2s infinite;
+      background: none;
+    }
+    .loader:before{
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(rgba(20, 20, 20, .5), rgba(0, 0, 0, .5));
+      background: -webkit-radial-gradient(rgba(20, 20, 20, .5), rgba(0, 0, 0, .5));
+    }
+ 
+    .loader:after {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      box-sizing: border-box;
+      border: 4px solid #0000;
+      animation: spinner-spin 1.2s cubic-bezier(0.6, 0.2, 0, 0.8) infinite,
+        spinner-fade 1.2s linear infinite;
+    }
+    .loader:before {
+      border-top-color: #fff;
+    }
+    .loader:after {
+      border-top-color: #ff3d00;
+      animation-delay: 0.4s;
+    }
+
+    @keyframes spinner-spin {
+      100% { transform: rotate(360deg)}
+    }
+    @keyframes spinner-fade {
+      25%, 75% { opacity: 0.1}
+      50% { opacity: 1 }
+    }
+  </style>
+</head>
+<body>
+  ewfwef
+  <div class="loader-center">
+    <div class="loader"></div>
+  </div>
+  <!-- เพิ่มปุ่ม "เริ่ม" และ "หยุด" -->
+  <button id="startButton">เริ่ม</button>
+  <button id="stopButton">หยุด</button>
+  <!-- JavaScript สำหรับควบคุมการโหลดและหยุดโหลด -->
+  <script>
+    // $(document).ready(function() {
+    //   var loaderInterval;
+
+    //   $("#startButton").click(function() {
+    //     // เริ่มการโหลด
+    //     $(".loader").show(); // แสดง loader
+    //     loaderInterval = setInterval(function() {
+    //       // ทำงานที่นี่เมื่อคุณคลิกปุ่ม "เริ่ม"
+    //       // คุณสามารถเพิ่มโค้ดที่คุณต้องการให้โหลดที่นี่
+    //     }, 1000);
+    //   });
+
+    //   $("#stopButton").click(function() {
+    //     // หยุดการโหลด
+    //     clearInterval(loaderInterval); // หยุดโหลด
+    //     $(".loader").hide(); // ซ่อน loader
+    //   });
+    // });
+  </script>
+</body>
+</html>

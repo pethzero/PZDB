@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loader</title>
+  <!-- https://cssloaders.github.io/ -->
+  <link href="load.css" rel="stylesheet">
+  <style>
+
+    .loader-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+
+    .loader {
+      font-size: 48px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      display: inline-block;
+      color: #02b217;
+      letter-spacing: 2px;
+      position: fixed;
+      box-sizing: border-box;
+      background: none;
+    }
+
+    .loader:before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(rgba(20, 20, 20, .5), rgba(0, 0, 0, .5));
+      background: -webkit-radial-gradient(rgba(20, 20, 20, .5), rgba(0, 0, 0, .5));
+    }
+
+    .loader::after {
+      content: 'Loading';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #FFF;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
+      animation: animloader 6s linear infinite;
+      background: none;
+      /* ลบพื้นหลังสีขาวที่มากับ .loader::after */
+    }
+
+    @keyframes animloader {
+      0% {
+        height: 100%;
+      }
+
+      100% {
+        height: 0%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    44444
+  </div>
+  <div class="loader-center">
+    <div class="loader">Loading</div>
+  </div>
+</body>
+
+</html>
