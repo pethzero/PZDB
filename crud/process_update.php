@@ -1,7 +1,9 @@
 <?php
+include("database.php");
 include("sql.php");
 include("bpdata.php");
-include("crud_zen.php");
+include("crud_update.php");
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $queryIdHD = isset($_POST['queryIdHD']) ? $_POST['queryIdHD'] : '';
@@ -9,29 +11,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $tableData = isset($_POST['tableData']) ? $_POST['tableData'] : null;
     $tableData_Json = json_decode($tableData, true);
-    // ดำเนินการกับข้อมูลตามที่คุณต้องการ
-    // เช่น บันทึกลงฐานข้อมูลหรือส่งอีเมล
-    // ใช้คลาส InsertData เพื่อ insert ข้อมูล
+
+    $DataEdit = isset($_POST['DataEdit']) ? $_POST['DataEdit'] : null;
+    $DataEdit_Json = json_decode($DataEdit, true);
+    
     try {
         $sqlQueries = new SQLQueries();
+
         // ใช้เมทอด scanSQL() เพื่อรับคำสั่ง SQL ตาม $queryId
         $sqlQuery = $sqlQueries->scanSQL($queryIdHD);
         if ($sqlQuery !== null) {
-            $insertData = new CRUDDATA('mysql', 'localhost', 'test', 'root', '1234');
-            $insertData->data_commit->beginTransaction();  // เริ่ม Transaction ดึงมาจาก class InsertData
-            if ($insertData->insertRecordMultiple($tableData_Json, $sqlQuery, $condition))
-            {
+            $updateData = new UpdateData();
+            $updateData->data_commit->beginTransaction();  
+            if ($updateData->updateRecord($DataEdit_Json[0], $sqlQuery, $condition)) {
                 $response = array(
                     'message' => 'Data received successfully',
                     'status' => 'success'
                 );
-                $insertData->data_commit->commit();
+                $updateData->data_commit->commit();
             } else {
                 $response = array(
-                    'message' => $insertData->message_log,
+                    'message' => 'Data received Error',
                     'status' => 'error'
                 );
-                $insertData->data_commit->rollBack();
+                $updateData->data_commit->rollBack();
             }
         } else {
             $response = array(
@@ -39,6 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 'status' => 'error',
             );
         }
+
+        // $response = array(
+        //     'message' => 'Data received successfully',
+        //     'sql' =>  $sqlQuery,
+        //     'DataEdit' =>  $DataEdit,
+        //     'DataEdit_Json ' =>  $DataEdit_Json[0] 
+        // );
         header('Content-Type: application/json');
         echo json_encode($response);
     } catch (Exception $e) {

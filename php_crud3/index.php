@@ -3,26 +3,15 @@
 
 <head>
     <?php
-    session_start();
-    if (!isset($_SESSION["RECNO"])) {
-        header("Location: index.php"); // ตัวอย่างการเด้งไปยังหน้า login.php
-        exit(); // ออกจากสคริปต์เพื่อหยุดการทำงานต่อ
-    }
     include("0_headcss.php");
     ?>
     <link rel="preload" href="css/loader.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 </head>
 <?php
-$data_link = "";
-$data_message = "";
-$size = count($_GET);
-$recno = null;
+
 ?>
 
 <body>
-    <?php
-    include("0_header.php");
-    ?>
     <link rel="stylesheet" href="css/mycustomize.css">
     <style>
         .c_activity {
@@ -38,7 +27,6 @@ $recno = null;
             white-space: nowrap;
             /* overflow-y: scroll; */
         }
-
         .datepicker td,
         th {
             text-align: center;
@@ -49,68 +37,21 @@ $recno = null;
         .datepicker {
             border: 1px solid black;
         }
-
-        /* #detailtable th.no-wrap {
-            white-space: normal;
-            width: auto;
-        } */
-
-
-        /* th.detail-tr {
-            width: 3000px;
-        } */
-
         @media (min-width: 768px) {
             .custom-input-pc {
                 width: 450px;
             }
-
             .btn-input {
                 width: 120px;
             }
-
-            /* .company-input {
-                width: 400px;
-            }
-            .detail-input {
-                width: 500px;
-            } */
-            /* .remark-input {
-                width: 200px;
-            } */
-
-            /* .detail-input {
-                width: 700px;
-            }
-            .remark-input {
-                width: 500px;
-            } */
-
-            /* th.detail-tr {
-                width: 10000px;
-            }
-
-            th.date-tr {
-                width: 10000px;
-            } */
-
-
             .date-input {
                 width: 140px;
             }
-
-
         }
-
         @media (max-width: 767px) {
             .custom-input-phone {
                 width: 300px;
             }
-
-            /* th.detail-tr {
-                width: 3000px !important;
-            } */
-
             .company-input {
                 width: 250px;
             }
@@ -122,11 +63,6 @@ $recno = null;
             .remark-input {
                 width: 200px;
             }
-
-            /*
-            tr th.date-input {
-                width: 200px !important;
-            } */
             .date-input {
                 width: 120px;
             }
@@ -139,7 +75,13 @@ $recno = null;
                 <div class="row pt-3">
                     <h2>ตารางนัดหมาย</h2>
                 </div>
+                <div>
+                    หมายเหตุ ทำการเปลี่ยน ใน Code
+                    มี การ เชต new CRUDDATA('mysql', 'localhost', 'test', 'root', '1234');
+                    ท่านต้อง setdatabase ให้ต้องกับ database 
+                </div>
                 <hr>
+                
                 <div class="createdata">
                     <div class="row">
                         <div class="col-sm-12 col-md-6 col-lg-6">
@@ -371,7 +313,7 @@ $recno = null;
         // สร้างฟังก์ชันสำหรับดึงข้อมูลจากแหล่งข้อมูล
         function getDataFromServer() {
             // กำหนด URL ของแหล่งข้อมูลที่ต้องการดึงข้อมูลฃ
-            fetch('ajax/process_select.php', {
+            fetch('process_select.php', {
                     method: 'POST',
                     body: set_formdata('select'), // ใช้ FormData เป็นข้อมูลที่จะส่ง
                 })
@@ -406,7 +348,7 @@ $recno = null;
                 ` <textarea class="form-control remark-input" maxlength="500" rows="2" ></textarea>`,
                 `<div class="date datepicker_get" >
                     <input type="text" class="form-control date-input"/>
-                    <span class="input-group-append">D_
+                    <span class="input-group-append">
                     </span>
                 </div>`,
                 `<div class="date  datepicker_get" >
@@ -516,7 +458,7 @@ $recno = null;
             var clickedButtonName = e.originalEvent.submitter.name;
 
             if (clickedButtonName === 'save') {
-                let url = 'ajax/process_insert.php';
+                let url = 'process_insert.php';
                 let status_sql = 'save';
                 datatable_generetor();
                 if (process == 'T') {
@@ -524,12 +466,12 @@ $recno = null;
                 }
             } else if (clickedButtonName === 'editsave') {
                 // saveRemoveButton() 
-                let url = 'ajax/process_update.php';
+                let url = 'process_update.php';
                 let status_sql = 'update';
                 AlertSave(url, status_sql)
             } else if (clickedButtonName === 'removerow') {
                 // saveRemoveButton() 
-                let url = 'ajax/process_delete.php';
+                let url = 'process_delete.php';
                 let status_sql = 'delete';
                 AlertSave(url, status_sql)
                 console.log('remove')

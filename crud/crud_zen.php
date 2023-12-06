@@ -120,6 +120,23 @@ class CRUDDATA
         }
     }
 
+    public function SelectRecordGet($sqlQuery)
+    {
+        try {
+            // $this->conn->beginTransaction(); // เริ่ม Transaction
+            $stmt = $this->conn->prepare($sqlQuery);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            // ส่งค่าผลลัพธ์กลับ
+            // return $result;
+            return array('result' => $result, 'status' => true,  'db_connect' => $this->message_log, 'fecth_select' => 'select success');
+        } catch (PDOException $e) {
+            // $this->conn->rollBack(); // Rollback การ Transaction เมื่อเกิดข้อผิดพลาด
+            return array('result' => [], 'status' => false, 'db_connect' => $this->message_log, 'fecth_select' => $e->getMessage());
+            // return false;
+        }
+    }
+
     public function SelectRecord($sqlQuery)
     {
         try {
