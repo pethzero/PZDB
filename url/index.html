@@ -1,0 +1,11 @@
+// ดึงค่า recno จาก URL
+function getRecnoFromURL() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('recno');
+}
+
+// เรียกใช้ฟังก์ชั่นและดึง recno
+const recnoValue = getRecnoFromURL();
+
+// ในกรณีนี้คุณสามารถนำ recnoValue ไปใช้ต่อได้
+console.log('recno:', recnoValue);
