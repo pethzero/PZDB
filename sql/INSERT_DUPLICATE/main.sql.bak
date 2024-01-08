@@ -1,0 +1,31 @@
+--ตัวอย่าง 1 การใช้ username ทีไม่เป็น UNIQUE
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50),
+    email VARCHAR(100),
+    password VARCHAR(255)
+);
+
+--ตัวอย่าง 2 การใช้ username ที่เป็น UNIQUE
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE,
+    email VARCHAR(100),
+    password VARCHAR(255)
+);
+
+
+
+
+--เทส ให้ลองหรือ ตัวอย่างที่ 1 เทส และ 2 เทส
+-- ลองแทรกข้อมูลใหม่
+INSERT INTO users (username, email, password)
+VALUES ('john_doe', 'john@example.com', 'hashed_password')
+ON DUPLICATE KEY UPDATE
+email = VALUES(email), password = VALUES(password);
+
+-- ลองแทรกข้อมูลใหม่ (ค่า username ที่ซ้ำกัน)
+INSERT INTO users (username, email, password)
+VALUES ('john_doe', 'new_email@example.com', 'new_hashed_password')
+ON DUPLICATE KEY UPDATE
+email = VALUES(email), password = VALUES(password);

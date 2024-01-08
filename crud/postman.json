@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "d6d44339-6534-4667-ad8f-b035b671e42c",
+		"name": "PHP_CRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18079087"
+	},
+	"item": [
+		{
+			"name": "Connect",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost/PZDB/crud/process_connect.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PZDB",
+						"crud",
+						"process_connect.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Select",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "queryIdHD",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/PZDB/crud/process_select.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PZDB",
+						"crud",
+						"process_select.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "queryIdHD",
+							"value": "0001",
+							"type": "text"
+						},
+						{
+							"key": "condition",
+							"value": "0001",
+							"type": "text"
+						},
+						{
+							"key": "apidata",
+							"value": "[{ \"id\": 1 }]",
+							"type": "text"
+						},
+						{
+							"key": "method",
+							"value": "R",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/PZDB/crud/process_crud.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PZDB",
+						"crud",
+						"process_crud.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "queryIdHD",
+							"value": "0002",
+							"type": "text"
+						},
+						{
+							"key": "condition",
+							"value": "0002",
+							"type": "text"
+						},
+						{
+							"key": "apidata",
+							"value": "[ {\"name\":\"Pethzero\",\"score\":50,\"grade\":\"D\"}]",
+							"type": "text"
+						},
+						{
+							"key": "method",
+							"value": "C",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/PZDB/crud/process_crud.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PZDB",
+						"crud",
+						"process_crud.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "queryIdHD",
+							"value": "0003",
+							"type": "text"
+						},
+						{
+							"key": "condition",
+							"value": "0003",
+							"type": "text"
+						},
+						{
+							"key": "apidata",
+							"value": "[{\"id\":12,\"name\":\"Pethzero\",\"score\":66,\"grade\":\"C\"}]",
+							"type": "text"
+						},
+						{
+							"key": "method",
+							"value": "U",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/PZDB/crud/process_crud.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PZDB",
+						"crud",
+						"process_crud.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DETELE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "queryIdHD",
+							"value": "0004",
+							"type": "text"
+						},
+						{
+							"key": "condition",
+							"value": "0001",
+							"type": "text"
+						},
+						{
+							"key": "apidata",
+							"value": "[{ \"id\": 13}]",
+							"type": "text"
+						},
+						{
+							"key": "method",
+							"value": "D",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/PZDB/crud/process_crud.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PZDB",
+						"crud",
+						"process_crud.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
